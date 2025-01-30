@@ -1,0 +1,11 @@
+.CursorPointer {
+  cursor: pointer;
+}
+
+.textLower {
+  text-transform: lowercase;
+}
+
+.RobotoFont {
+  font-family: "Roboto";
+}
