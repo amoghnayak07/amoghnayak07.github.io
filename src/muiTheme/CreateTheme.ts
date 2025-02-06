@@ -6,13 +6,13 @@ const theme = createTheme({
   spacing: 10,
   palette: {
     primary: {
-      main: "#0F172A",
-      light: "#f9f9f9",
-      contrastText: "#5131a5",
-      dark: "#312E81",
+      main: "#b4b4b4",
+      light: "#dbdbdb",
+      contrastText: "#aa9191",
+      dark: "#fff",
     },
     secondary: {
-      main: "#e5e5e5",
+      main: "#181818",
       contrastText: "#818CF8",
       light: "#E0F2FE",
       dark: "#9c9ba9",
@@ -84,10 +84,14 @@ const theme = createTheme({
       fontWeight: 700,
     },
     heading_01_extra_bold: {
-      fontFamily: "Roboto",
+      fontFamily: FontConstants.AppFont1,
       display: "block",
       fontSize: "3rem",
       fontWeight: 800,
+    },
+    heading_02_bold: {
+      fontSize: "2.25rem",
+      fontWeight: 500,
     },
     heading_01_small: {
       fontFamily: FontConstants.AppFont1,
@@ -124,12 +128,6 @@ const theme = createTheme({
       display: "block",
       fontSize: "1.5rem",
       fontWeight: 500,
-    },
-    heading_02_bold: {
-      fontFamily: FontConstants.AppFont1,
-      display: "block",
-      fontSize: "1.5rem",
-      fontWeight: 700,
     },
     heading_02_extra_bold: {
       fontFamily: FontConstants.AppFont1,
@@ -251,8 +249,7 @@ const theme = createTheme({
       fontFamily: FontConstants.AppFont1,
       display: "block",
       fontSize: "1rem",
-      fontWeight: "600",
-      color: "#334155",
+      fontWeight: 400,
     },
     sub_heading_bold: {
       fontFamily: FontConstants.AppFont1,

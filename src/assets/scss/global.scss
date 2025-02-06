@@ -4,8 +4,8 @@ $bgcolor: #fffbf2;
 $white: #ffffff;
 $inputBgColor: #f5f5f5;
 //fontFamily
-$lato: Lato;
-$roboto: Roboto;
+$mainFont: "Space Grotesk";
+$secondaryFont: "DM Sans";
 
 //break points (taken from default material theme)
 $xsBreak: 0px;
@@ -63,7 +63,7 @@ input[type="number"] {
     color: #323232 !important;
     font-size: 1rem !important;
     font-weight: 300 !important;
-    font-family: $lato;
+    font-family: $mainFont;
     line-height: 1.5rem !important;
     background-color: #f5f5f5 !important;
     border-radius: 0.313rem !important;
@@ -118,7 +118,7 @@ input[type="number"] {
     color: #323232 !important;
     font-size: 1.25rem !important;
     font-weight: 300 !important;
-    font-family: $lato;
+    font-family: $mainFont;
     line-height: normal !important;
     background-color: #ffffff !important;
     border-radius: 0.313rem !important;
@@ -196,4 +196,17 @@ input[type="number"] {
   & .MuiAutocomplete-inputRoot {
     padding-right: 0rem !important;
   }
+}
+
+::-webkit-scrollbar {
+  width: 0.25rem;
+  background: #181818;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #aa9191;
+}
+
+.section {
+  scroll-behavior: smooth;
 }

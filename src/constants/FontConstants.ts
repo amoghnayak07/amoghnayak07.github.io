@@ -1,4 +1,4 @@
 export const FontConstants = {
-  AppFont1: "Lato",
-  AppFont2: "Roboto",
+  AppFont1: "Space Grotesk",
+  AppFont2: "DM Sans",
 };
