@@ -25,7 +25,11 @@ const Nav = (props: any) => {
             A G N
           </Typography>
         </Link>
-        <Box display={"flex"} alignItems={"center"} gap="2rem">
+        <Box
+          display={"flex"}
+          alignItems={"center"}
+          gap={isMob ? "1rem" : "2rem"}
+        >
           {["work", "about", "contact"].map((section) => (
             <Link
               key={section}

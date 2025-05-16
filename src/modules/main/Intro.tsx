@@ -50,7 +50,7 @@ const Intro = (props: any) => {
       >
         But you can call me{" "}
         <span className={classes.highlightName}>
-          AGN <span style={{ color: "#b4b4b4" }}>or</span> A-Mog
+          AGN <span style={{ color: "#535353" }}>or</span> A-Mog
         </span>
       </Typography>
       <Box display="flex" justifyContent={"center"} gap="2rem" mt="1rem">

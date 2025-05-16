@@ -16,7 +16,6 @@ const Contact = (props: any) => {
       justifyContent="center"
       alignItems="center"
       textAlign="center"
-      padding="4rem"
     >
       <Typography
         variant={isMob ? "heading_02_medium" : "heading_01_medium"}
