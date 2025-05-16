@@ -1,9 +1,13 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { useStyles } from "./styles";
 
-const Contact = () => {
+const Contact = (props: any) => {
+  const { isMob } = props;
+  const classes = useStyles();
+
   return (
     <Box
       display="flex"
@@ -14,53 +18,46 @@ const Contact = () => {
       textAlign="center"
       padding="4rem"
     >
-      <Typography variant="heading_01_medium" color="primary">
+      <Typography
+        variant={isMob ? "heading_02_medium" : "heading_01_medium"}
+        color="primary"
+        fontSize={"2rem"}
+      >
         Let’s Connect!
       </Typography>
-      <Typography variant="heading_02_medium" color="primary" maxWidth="600px">
+      <Typography
+        variant={isMob ? "heading_03_medium" : "heading_02_medium"}
+        color="primary"
+        maxWidth="600px"
+      >
         Whether you’re looking to collaborate, discuss an opportunity, or just
-        chat about tech, feel free to reach out!
+        chat, feel free to reach out!
       </Typography>
 
       <Box display="flex" gap="1.5rem">
-        <Button
-          variant="outlined"
-          startIcon={<EmailOutlinedIcon />}
+        <IconButton
           href="mailto:nayak.amo@northeastern.edu"
-          sx={{
-            textTransform: "capitalize",
-            height: "2.5rem",
-            borderRadius: "8px",
-          }}
+          size="large"
+          disableRipple
         >
-          Email
-        </Button>
-        <Button
-          variant="outlined"
-          startIcon={<LinkedInIcon />}
+          <EmailOutlinedIcon className={classes.contactIcon} />
+        </IconButton>
+        <IconButton
           href="https://www.linkedin.com/in/amogh-nayak"
           target="_blank"
-          sx={{
-            textTransform: "capitalize",
-            height: "2.5rem",
-            borderRadius: "8px",
-          }}
+          size="large"
+          disableRipple
         >
-          LinkedIn
-        </Button>
-        <Button
-          variant="outlined"
-          startIcon={<GitHubIcon />}
+          <LinkedInIcon className={classes.contactIcon} />
+        </IconButton>
+        <IconButton
           href="https://github.com/amoghnayak07"
           target="_blank"
-          sx={{
-            textTransform: "capitalize",
-            height: "2.5rem",
-            borderRadius: "8px",
-          }}
+          size="large"
+          disableRipple
         >
-          GitHub
-        </Button>
+          <GitHubIcon className={classes.contactIcon} />
+        </IconButton>
       </Box>
     </Box>
   );

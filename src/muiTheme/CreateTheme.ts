@@ -6,10 +6,10 @@ const theme = createTheme({
   spacing: 10,
   palette: {
     primary: {
-      main: "#b4b4b4",
-      light: "#dbdbdb",
-      contrastText: "#aa9191",
-      dark: "#fff",
+      main: "#535353",
+      light: "#fefefe",
+      contrastText: "#a45f5f",
+      dark: "#272727",
     },
     secondary: {
       main: "#181818",
@@ -127,7 +127,7 @@ const theme = createTheme({
       fontFamily: FontConstants.AppFont1,
       display: "block",
       fontSize: "1.5rem",
-      fontWeight: 500,
+      fontWeight: "bold",
     },
     heading_02_extra_bold: {
       fontFamily: FontConstants.AppFont1,
@@ -230,7 +230,7 @@ const theme = createTheme({
     sub_heading_extra_small: {
       fontFamily: FontConstants.AppFont1,
       display: "block",
-      fontSize: "0.75rem",
+      fontSize: "1.5rem",
       fontWeight: 400,
     },
     sub_heading_small: {

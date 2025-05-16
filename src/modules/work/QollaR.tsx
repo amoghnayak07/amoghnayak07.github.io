@@ -1,50 +1,69 @@
-import { Box, Chip, Fade, Typography } from "@mui/material";
+import { Box, Button, Divider, Fade, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { QollaRImages, QollaRSkills } from "../../constants/PortfolioConstants";
-import Carousel from "../../common/carousel/Carousel";
 import LaunchOutlinedIcon from "@mui/icons-material/LaunchOutlined";
+import { useStyles } from "./styles";
 
-const QollaR = () => {
+const QollaR = (props: any) => {
+  const classes = useStyles();
+
+  const { isMob } = props;
+
   return (
     <Fade in={true}>
-      <Box display="flex" flexDirection="column" height="100%" gap="1rem">
-        <span>
-          <Typography variant="heading_02_medium" color="primary">
-            Co-Founder, Software Developer
+      <Box
+        display="flex"
+        flexDirection="column"
+        height="100%"
+        gap="0.5rem"
+        p={"0 1rem 0.5rem"}
+      >
+        <Box>
+          <Typography variant="heading_02_medium" color="primary.dark">
+            Founder, Software Developer
           </Typography>
           <Typography variant="sub_heading_medium" color="primary">
-            Nov 2023 - Aug 2024
+            Nov 2023 - present
           </Typography>
+        </Box>
 
-          <Link to="https://app.qollar.in" target="_blank">
-            <LaunchOutlinedIcon
-              sx={{ mt: "0.5rem", color: "primary.contrastText" }}
-            />
-          </Link>
+        <Divider />
 
-          <Box display="flex" gap="1rem" mt="1rem" flexWrap={"wrap"}>
-            {QollaRSkills.map((skill: any) => (
-              <Chip
-                label={skill}
-                color="primary"
-                variant="filled"
-                sx={{ color: "#181818", fontWeight: 500 }}
-              />
-            ))}
-          </Box>
-        </span>
+        {/* <Box display="flex" gap="1rem" mt="1rem" flexWrap={"wrap"}>
+          {QollaRSkills.map((skill: any) => (
+            <Chip label={skill} variant="filled" sx={{ fontWeight: 500 }} />
+          ))}
+        </Box> */}
 
-        <Typography variant="heading_03_medium" color="primary" mt="1rem">
-          As a co-founder and software developer, I built QollaR, a smart pet
-          collar that leverages QR technology to ensure pet safety and
-          identification. Designed for pet owners and shelters, QollaR provides
-          a seamless way to access pet profiles, medical records, and emergency
-          contacts—all with a simple scan.
+        <Typography
+          variant={isMob ? "heading_04_medium" : "heading_03_medium"}
+          color="primary"
+          mt="1rem"
+        >
+          QollaR is a QR-based pet care platform I founded to support the
+          welfare of street animals through community-driven tracking and
+          adoption. I developed the full-stack solution using the MERN Stack,
+          with Dockerized CI/CD deployments on AWS EC2 and ECR. Within the first
+          month, 150 dogs were “QollaR’ed,” enabling real-time health tracking
+          and increasing adoption visibility. The platform empowered local
+          communities to collaborate more effectively and brought tangible
+          impact to grassroots animal care.
         </Typography>
 
-        <Box mt="1.5rem">
+        <Link
+          to="https://app.qollar.in"
+          target="_blank"
+          type="button"
+          style={{ display: "contents" }}
+        >
+          <Button className={classes.viewWork} variant="contained">
+            View
+            <LaunchOutlinedIcon sx={{ color: "primary.light" }} />
+          </Button>
+        </Link>
+
+        {/* <Box mt="1.5rem">
           <Carousel images={QollaRImages} />
-        </Box>
+        </Box> */}
       </Box>
     </Fade>
   );

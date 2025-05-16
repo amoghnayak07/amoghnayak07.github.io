@@ -3,7 +3,7 @@ import { createStyles, makeStyles } from "@mui/styles";
 export const useStyles = makeStyles(() =>
   createStyles({
     layout: {
-      backgroundColor: "#181818",
+      backgroundColor: "#fefefe",
       minHeight: "100vh", // Ensures parent height
       padding: "0 4rem 4rem",
       "&::-webkit-scrollbar": {

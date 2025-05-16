@@ -121,3 +121,19 @@ export const ResoluteHighlights = [
   "Integrated Firebase for real-time patient data storage and seamless authentication.",
   "Helped launch the MVP ahead of schedule, accelerating product development.",
 ];
+
+export const IntroGif = {
+  img: "/assets/gifs/coder-gif.gif",
+  alt: "BuRP-Landing",
+};
+
+export const IntroImages = {
+  LAPTOP: {
+    img: "/assets/images/platform/laptop.png",
+    alt: "INTRO-laptop",
+  },
+  COFFEE: {
+    img: "/assets/images/platform/coffee-cup.png",
+    alt: "INTRO-coffee",
+  },
+};

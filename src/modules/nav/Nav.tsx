@@ -3,7 +3,7 @@ import { Link } from "react-scroll";
 import { useStyles } from "./styles";
 
 const Nav = (props: any) => {
-  const { activeSection } = props;
+  const { activeSection, isMob } = props;
   const classes = useStyles();
 
   return (
@@ -18,15 +18,15 @@ const Nav = (props: any) => {
           spy={true}
         >
           <Typography
-            variant="heading_02_bold"
-            color="primary"
+            variant={isMob ? "heading_03_bold" : "heading_02_bold"}
+            color={activeSection === "intro" ? "primary.dark" : "primary.main"}
             className={`${classes.navs} ${classes.noUnderline}`}
           >
-            AGN
+            A G N
           </Typography>
         </Link>
         <Box display={"flex"} alignItems={"center"} gap="2rem">
-          {["intro", "work", "about", "contact"].map((section) => (
+          {["work", "about", "contact"].map((section) => (
             <Link
               key={section}
               to={section}
@@ -37,7 +37,7 @@ const Nav = (props: any) => {
             >
               <Typography
                 variant="h6"
-                color="primary"
+                color="primary.dark"
                 className={
                   activeSection === section ? classes.currPage : classes.navs
                 }
