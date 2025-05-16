@@ -44,10 +44,6 @@ const Work = (props: any) => {
           const y =
             el.getBoundingClientRect().top + window.pageYOffset + yOffset;
           window.scrollTo({ top: y, behavior: "smooth" });
-          // scrollToRef.current[index]?.scrollIntoView({
-          //   behavior: "smooth",
-          //   block: "start",
-          // });
         }, 200);
       }
     };
