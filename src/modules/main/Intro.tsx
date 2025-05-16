@@ -2,14 +2,35 @@ import { Box, Typography } from "@mui/material";
 import { useStyles } from "./styles";
 import { Link } from "react-scroll";
 import LinkButton from "../../common/linkButton/LinkButton";
+import { IntroImages } from "../../constants/PortfolioConstants";
 
-const Intro = () => {
+const Intro = (props: any) => {
   const classes = useStyles();
+
+  const { isTab, isMob } = props;
 
   return (
     <Box display="flex" flexDirection={"column"} alignItems={"center"}>
+      <Box display="flex">
+        <img
+          src={IntroImages.COFFEE.img}
+          alt={IntroImages.COFFEE.alt}
+          className={classes.coffee}
+        />
+        <img
+          src={IntroImages.LAPTOP.img}
+          alt={IntroImages.LAPTOP.alt}
+          className={classes.laptop}
+        />
+      </Box>
       <Typography
-        variant="heading_01_medium"
+        variant={
+          isMob
+            ? "heading_03_medium"
+            : isTab
+            ? "heading_02_medium"
+            : "heading_01_medium"
+        }
         color="primary"
         textAlign={"center"}
       >
@@ -17,7 +38,13 @@ const Intro = () => {
         <span className={classes.highlightName}>Amogh Gopalakrishna Nayak</span>
       </Typography>
       <Typography
-        variant="heading_01_medium"
+        variant={
+          isMob
+            ? "heading_03_medium"
+            : isTab
+            ? "heading_02_medium"
+            : "heading_01_medium"
+        }
         color="primary"
         textAlign={"center"}
       >

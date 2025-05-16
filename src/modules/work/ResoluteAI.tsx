@@ -1,48 +1,34 @@
-import { Box, Chip, Fade, List, ListItem, Typography } from "@mui/material";
-import {
-  ResoluteHighlights,
-  ResoluteSkills,
-} from "../../constants/PortfolioConstants";
+import { Box, Divider, Fade, Typography } from "@mui/material";
 
-const ResoluteAI = () => {
+const ResoluteAI = (props: any) => {
+  const { isMob } = props;
+
   return (
     <Fade in={true}>
       <Box display="flex" flexDirection="column" height="100%" gap="1rem">
-        <span>
-          <Typography variant="heading_02_medium" color="primary">
+        <Box>
+          <Typography variant="heading_02_medium" color="primary.dark">
             Full Stack Developer Intern
           </Typography>
           <Typography variant="sub_heading_medium" color="primary">
             July 2020 - Oct 2020
           </Typography>
-          <Box display="flex" gap="1rem" mt="1rem" flexWrap={"wrap"}>
-            {ResoluteSkills.map((skill: any) => (
-              <Chip
-                label={skill}
-                color="primary"
-                variant="filled"
-                sx={{ color: "#181818", fontWeight: 500 }}
-              />
-            ))}
-          </Box>
-        </span>
+        </Box>
 
-        <Typography variant="heading_03_medium" color="primary" mt="1rem">
-          As a Full Stack Development Intern, I contributed to ResoluteAI's
-          healthcare SaaS platform focused on patient management and analytics.
-          My work primarily involved frontend optimization, cloud-based
-          architecture, and UI/UX enhancements.
+        <Divider />
+
+        <Typography
+          variant={isMob ? "heading_04_medium" : "heading_03_medium"}
+          color="primary"
+          mt="1rem"
+        >
+          As a Full-Stack Intern at ResoluteAI, I helped deliver a healthcare
+          SaaS MVP two months early by optimizing React.js frontend performance
+          and implementing real-time patient data handling with Firebase. I also
+          improved user workflows through seamless authentication and UI/UX
+          enhancements, contributing to higher clinician engagement during pilot
+          testing.
         </Typography>
-
-        <List sx={{ listStyleType: "disc", pl: 4 }}>
-          {ResoluteHighlights.map((highlight: any) => (
-            <ListItem sx={{ display: "list-item", color: "#b4b4b4" }}>
-              <Typography variant="heading_03_medium" color="primary">
-                {highlight}
-              </Typography>
-            </ListItem>
-          ))}
-        </List>
       </Box>
     </Fade>
   );

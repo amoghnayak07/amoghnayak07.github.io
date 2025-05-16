@@ -9,7 +9,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       "&:hover": {
         textDecoration: "underline",
         transform: "scale(0.9)",
-        color: theme.palette.primary.light,
+        color: theme.palette.primary.main,
       },
     },
     noUnderline: {
@@ -19,16 +19,19 @@ export const useStyles = makeStyles((theme: Theme) =>
       color: `${theme.palette.primary.dark} !important`,
       transform: "scale(0.9)",
       textDecoration: "underline",
+      cursor: "pointer",
     },
     toolbar: {
       display: "flex",
       justifyContent: "space-between",
+      borderBottom: "1px solid rgb(55 65 81)",
+      alignItems: "center",
     },
     appbar: {
       boxShadow: "none !important",
       backgroundColor: "transparent !important",
-      top: "4rem !important",
       padding: "0 2rem",
+      backdropFilter: "blur(2px)",
     },
   })
 );
