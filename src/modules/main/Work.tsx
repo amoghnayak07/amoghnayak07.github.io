@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Accordion,
   AccordionDetails,
@@ -33,8 +33,23 @@ const Work = (props: any) => {
   }, [activeSection]);
 
   const handleChange =
-    (panel: string) => (_event: React.SyntheticEvent, isExpanded: boolean) => {
+    (panel: string, index: number) =>
+    (_event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
+      if (isExpanded) {
+        // delay to let the accordion expand first
+        setTimeout(() => {
+          const el = scrollToRef.current[index];
+          const yOffset = -60; // Adjust based on navbar height
+          const y =
+            el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+          // scrollToRef.current[index]?.scrollIntoView({
+          //   behavior: "smooth",
+          //   block: "start",
+          // });
+        }, 200);
+      }
     };
 
   const getWorkComponent = (work: string) => {
@@ -53,6 +68,8 @@ const Work = (props: any) => {
         return null;
     }
   };
+
+  const scrollToRef: any = useRef<(HTMLDivElement | null)[]>([]);
 
   return (
     <Box
@@ -83,11 +100,11 @@ const Work = (props: any) => {
         <Grid2 container>
           {isTab ? null : <Grid2 size={2} />}
           <Grid2 size={isTab ? 12 : 8}>
-            {WorkItems.map((work: any) => (
+            {WorkItems.map((work: any, index: any) => (
               <Accordion
                 expanded={expanded === work}
                 classes={{ expanded: classes.expandedAccordion }}
-                onChange={handleChange(work)}
+                onChange={handleChange(work, index)}
                 sx={{
                   overflow: "hidden",
                   background: "transparent",
@@ -106,6 +123,7 @@ const Work = (props: any) => {
                     if (work === selectedWork) setSelectedWork(null);
                     else setSelectedWork(work);
                   }}
+                  ref={(el) => (scrollToRef.current[index] = el)}
                 >
                   <Typography
                     variant={
