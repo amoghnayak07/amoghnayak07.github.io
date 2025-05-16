@@ -25,7 +25,6 @@ const Work = (props: any) => {
   const [expanded, setExpanded] = useState<string | false>(false);
   const [selectedWork, setSelectedWork] = useState<any>(null);
 
-  console.log({ activeSection });
   useEffect(() => {
     if (activeSection === "work") {
       setExpanded(false);
