@@ -33,6 +33,9 @@ export const useStyles = makeStyles((theme: Theme) =>
       scrollSnapAlign: "start",
       transition: "opacity 0.4s ease-in-out",
       paddingTop: "5rem",
+      [theme.breakpoints.down("sm")]: {
+        paddingTop: 0,
+      },
     },
     workTitle: {
       position: "relative",
