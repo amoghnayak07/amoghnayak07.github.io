@@ -18,11 +18,13 @@ const BuRP = (props: any) => {
         p={"0 1rem 0.5rem"}
       >
         <Box>
-          <Typography variant="heading_02_medium" color="primary.dark">
-            Founder, Software Developer
-          </Typography>
+          {isMob ? (
+            <Typography variant="heading_03_medium" color="primary.dark">
+              Founder, Software Developer
+            </Typography>
+          ) : null}
           <Typography variant="sub_heading_medium" color="primary">
-            Nov 2023 - present
+            Nov 2023 - Aug 2024
           </Typography>
         </Box>
 
@@ -33,14 +35,14 @@ const BuRP = (props: any) => {
           color="primary"
           mt="1rem"
         >
-          BuRP is a modern ERP SaaS platform I founded to help SMEs streamline
-          operations. I led the full-stack development using MERN Stack, and
-          implemented multi-organization tenancy with dynamic UI generators
-          driven by DB schemas. The platform runs on a Dockerized CI/CD pipeline
-          deployed via AWS EC2 and ECR, enabling fast, zero-downtime releases.
+          Founded and built a multi-tenant ERP SaaS from 0 to 1. Drove $60K+
+          revenue in 3 months through rapid iteration on customer feedback.
+          Architected microservices on AWS with Node.js, MongoDB schema-driven
+          React dashboards, and Dockerized CI/CD - cutting deployment time by
+          60%.
         </Typography>
         <Link
-          to="https://app.burpp.in"
+          to="https://www.app.burpp.in"
           target="_blank"
           type="button"
           style={{ display: "contents" }}

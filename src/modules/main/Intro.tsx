@@ -28,30 +28,40 @@ const Intro = (props: any) => {
           isMob
             ? "heading_03_medium"
             : isTab
-            ? "heading_02_medium"
-            : "heading_01_medium"
+              ? "heading_02_medium"
+              : "heading_01_medium"
         }
         color="primary"
         textAlign={"center"}
       >
-        Hey, I'm{" "}
         <span className={classes.highlightName}>Amogh Gopalakrishna Nayak</span>
       </Typography>
       <Typography
         variant={
           isMob
-            ? "heading_03_medium"
+            ? "heading_04_medium"
             : isTab
-            ? "heading_02_medium"
-            : "heading_01_medium"
+              ? "heading_03_medium"
+              : "heading_02_medium"
         }
         color="primary"
         textAlign={"center"}
       >
-        But you can call me{" "}
-        <span className={classes.highlightName}>
-          AGN <span style={{ color: "#535353" }}>or</span> A-Mog
-        </span>
+        Full-Stack & AI Engineer
+      </Typography>
+      <Typography
+        variant={
+          isMob
+            ? "heading_05_medium"
+            : isTab
+              ? "heading_04_medium"
+              : "heading_03_extra_bold"
+        }
+        color="primary"
+        textAlign={"center"}
+        mt="0.5rem"
+      >
+        I ship fast, scale smart, and don't break prod.
       </Typography>
       <Box display="flex" justifyContent={"center"} gap="2rem" mt="1rem">
         <Link

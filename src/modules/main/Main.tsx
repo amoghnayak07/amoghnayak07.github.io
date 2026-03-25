@@ -3,6 +3,7 @@ import MainLayout from "../../common/layout/MainLayout";
 import Nav from "../nav/Nav";
 import Intro from "./Intro";
 import Work from "./Work";
+import Projects from "./Projects";
 import { useStyles } from "./styles";
 import About from "./About";
 import Contact from "./Contact";
@@ -29,7 +30,7 @@ const Home = () => {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.9 },
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -46,6 +47,9 @@ const Home = () => {
       </section>
       <section id="work" className={classes.workSection}>
         <Work isTab={isTab} isMob={isMob} activeSection={activeSection} />
+      </section>
+      <section id="projects" className={classes.workSection}>
+        <Projects isTab={isTab} isMob={isMob} activeSection={activeSection} />
       </section>
       <section id="about" className={classes.section}>
         <About isMob={isMob} isMd={isMd} />

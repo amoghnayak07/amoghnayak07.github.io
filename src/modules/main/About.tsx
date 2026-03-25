@@ -22,57 +22,56 @@ const About = (props: any) => {
             isMob
               ? "heading_04_medium"
               : isMd
-              ? "heading_03_medium"
-              : "heading_02_medium"
+                ? "heading_03_medium"
+                : "heading_02_medium"
           }
           color="primary"
         >
-          I'm a creative product-thinker with a love for storytelling, driven by
-          curiosity and a deep desire to solve real problems. My journey into
-          tech began when I taught myself to build an app to address a personal
-          need—and I haven’t looked back since.
+          Software engineer with 4+ years building distributed systems,
+          high-throughput APIs, and AI products. I've gone from founding a SaaS
+          that hit $60K revenue to shipping LLM integrations in production. And
+          I care a lot about the craft in between.
         </Typography>
         <Typography
           variant={
             isMob
               ? "heading_04_medium"
               : isMd
-              ? "heading_03_medium"
-              : "heading_02_medium"
+                ? "heading_03_medium"
+                : "heading_02_medium"
           }
           color="primary"
         >
-          Having grown up across different places, I like to think that mosaic
-          of experiences has shaped how I think, build, and connect. Whether
-          it’s founding BuRP or creating QollaR, I believe in shipping fast,
-          learning on the go, and making a tangible impact.
+          Currently finishing my MS in CS at Northeastern, where I spend most of
+          my time on distributed systems and AI coursework. I like hard
+          problems, fast feedback loops, and coffee that's too strong.
         </Typography>
         <Typography
           variant={
             isMob
               ? "heading_04_medium"
               : isMd
-              ? "heading_03_medium"
-              : "heading_02_medium"
+                ? "heading_03_medium"
+                : "heading_02_medium"
           }
           color="primary"
         >
-          I’m especially interested in distributed systems, cloud-native
-          architecture, and building scalable products end-to-end. Outside of
-          work, you’ll find me skateboarding, catching live music, or on the
-          hunt for the perfect cup of coffee.
+          Skateboarding and live music when I'm not at a keyboard.
         </Typography>
         <Button
-          variant="outlined"
+          variant="contained"
           fullWidth={false}
           sx={{
             width: "8rem",
             textTransform: "capitalize",
             height: "2.5rem",
+            color: "primary.light",
+            backgroundColor: "primary.contrastText",
           }}
           startIcon={<GetAppOutlinedIcon fontSize="small" />}
-          href="/assets/images/Contact/AmoghGopalakrishnaNayakResume.pdf"
-          download="AmoghGopalakrishnaNayakResume.pdf"
+          href="/assets/images/Contact/Amogh_GNayak_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Resume
         </Button>

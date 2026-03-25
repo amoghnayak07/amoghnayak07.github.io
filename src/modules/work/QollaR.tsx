@@ -1,11 +1,6 @@
-import { Box, Button, Divider, Fade, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import LaunchOutlinedIcon from "@mui/icons-material/LaunchOutlined";
-import { useStyles } from "./styles";
+import { Box, Divider, Fade, Typography } from "@mui/material";
 
 const QollaR = (props: any) => {
-  const classes = useStyles();
-
   const { isMob } = props;
 
   return (
@@ -17,15 +12,19 @@ const QollaR = (props: any) => {
         gap="0.5rem"
         p={"0 1rem 0.5rem"}
       >
-        <Box>
+        {/* <Box>
           <Typography variant="heading_02_medium" color="primary.dark">
             Founder, Software Developer
           </Typography>
           <Typography variant="sub_heading_medium" color="primary">
             Nov 2023 - present
           </Typography>
-        </Box>
-
+        </Box> */}
+        {isMob ? (
+          <Typography variant="heading_04_medium" color="primary.dark">
+            MongoDB · Node.js · React.js · AWS · Docker
+          </Typography>
+        ) : null}
         <Divider />
 
         {/* <Box display="flex" gap="1rem" mt="1rem" flexWrap={"wrap"}>
@@ -39,27 +38,10 @@ const QollaR = (props: any) => {
           color="primary"
           mt="1rem"
         >
-          QollaR is a QR-based pet care platform I founded to support the
-          welfare of street animals through community-driven tracking and
-          adoption. I developed the full-stack solution using the MERN Stack,
-          with Dockerized CI/CD deployments on AWS EC2 and ECR. Within the first
-          month, 150 dogs were “QollaR’ed,” enabling real-time health tracking
-          and increasing adoption visibility. The platform empowered local
-          communities to collaborate more effectively and brought tangible
-          impact to grassroots animal care.
+          Built and launched a full-stack pet-care platform on the MERN stack,
+          onboarding 150+ street dog records within the first month. Shipped
+          with Dockerized CI/CD on AWS EC2, ECR, and Nginx from day one.
         </Typography>
-
-        <Link
-          to="https://app.qollar.in"
-          target="_blank"
-          type="button"
-          style={{ display: "contents" }}
-        >
-          <Button className={classes.viewWork} variant="contained">
-            View
-            <LaunchOutlinedIcon sx={{ color: "primary.light" }} />
-          </Button>
-        </Link>
 
         {/* <Box mt="1.5rem">
           <Carousel images={QollaRImages} />

@@ -1,10 +1,34 @@
 export const WorkItems = [
   "BuRP",
-  "QollaR",
   "LetsVenture",
   "Praan-e-Rakshak",
   "ResoluteAI",
 ];
+
+export const WorkTitles: Record<string, string> = {
+  BuRP: "Founder, Software Developer",
+  LetsVenture: "Software Developer",
+  "Praan-e-Rakshak": "Full Stack Developer",
+  ResoluteAI: "Full Stack Development Intern",
+};
+
+export const ProjectItems = [
+  "Game Creator",
+  "AI Platform Game",
+  "Relay-Intent",
+  "QollaR",
+  "Distributed KV Store",
+  "Game Night Planner",
+];
+
+export const ProjectTechs: Record<string, string> = {
+  "Game Creator": "React · FastAPI · PostgreSQL",
+  "AI Platform Game": "Python · PyTorch · Pygame · Deep Q-Learning",
+  "Relay-Intent": "Flask · React · Firebase · Gemini API",
+  QollaR: "MongoDB · Node.js · React.js · AWS · Docker",
+  "Distributed KV Store": "C++ · TCP Sockets · WAL · Distributed Systems",
+  "Game Night Planner": "Java · Android · Firebase",
+};
 
 export const BuRPImages = [
   {
