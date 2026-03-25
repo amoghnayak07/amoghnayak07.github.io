@@ -10,24 +10,26 @@ import {
 import { useStyles } from "./styles";
 import PlayArrowOutlinedIcon from "@mui/icons-material/PlayArrowOutlined";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
-import { WorkItems, WorkTitles } from "../../constants/PortfolioConstants";
-import BuRP from "../work/BuRP";
-import LV from "../work/LV";
-import PeR from "../work/PeR";
-import ResoluteAI from "../work/ResoluteAI";
+import { ProjectItems, ProjectTechs } from "../../constants/PortfolioConstants";
+import RelayIntent from "../projects/RelayIntent";
+import GameCreator from "../projects/GameCreator";
+import AIPlatformGame from "../projects/AIPlatformGame";
+import DistributedKVStore from "../projects/DistributedKVStore";
+import GameNightPlanner from "../projects/GameNightPlanner";
+import QollaR from "../work/QollaR";
 
-const Work = (props: any) => {
+const Projects = (props: any) => {
   const classes = useStyles();
 
   const { isTab, isMob, activeSection } = props;
 
   const [expanded, setExpanded] = useState<string | false>(false);
-  const [selectedWork, setSelectedWork] = useState<any>(null);
+  const [selectedProject, setSelectedProject] = useState<any>(null);
 
   useEffect(() => {
-    if (activeSection === "work") {
+    if (activeSection === "projects") {
       setExpanded(false);
-      setSelectedWork(null);
+      setSelectedProject(null);
     }
   }, [activeSection]);
 
@@ -36,10 +38,9 @@ const Work = (props: any) => {
     (_event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
       if (isExpanded) {
-        // delay to let the accordion expand first
         setTimeout(() => {
           const el = scrollToRef.current[index];
-          const yOffset = -60; // Adjust based on navbar height
+          const yOffset = -60;
           const y =
             el.getBoundingClientRect().top + window.pageYOffset + yOffset;
           window.scrollTo({ top: y, behavior: "smooth" });
@@ -47,16 +48,20 @@ const Work = (props: any) => {
       }
     };
 
-  const getWorkComponent = (work: string) => {
-    switch (work) {
-      case "BuRP":
-        return <BuRP isMob={isMob} />;
-      case "LetsVenture":
-        return <LV isMob={isMob} />;
-      case "Praan-e-Rakshak":
-        return <PeR isMob={isMob} />;
-      case "ResoluteAI":
-        return <ResoluteAI isMob={isMob} />;
+  const getProjectComponent = (project: string) => {
+    switch (project) {
+      case "Game Creator":
+        return <GameCreator isMob={isMob} />;
+      case "AI Platform Game":
+        return <AIPlatformGame isMob={isMob} />;
+      case "Relay-Intent":
+        return <RelayIntent isMob={isMob} />;
+      case "QollaR":
+        return <QollaR isMob={isMob} />;
+      case "Distributed KV Store":
+        return <DistributedKVStore isMob={isMob} />;
+      case "Game Night Planner":
+        return <GameNightPlanner isMob={isMob} />;
       default:
         return null;
     }
@@ -84,20 +89,21 @@ const Work = (props: any) => {
           alignItems={"center"}
         >
           <Typography variant={"heading_01_medium"} color="primary.dark">
-            WORK
+            PROJECTS
           </Typography>
           <Typography variant="heading_02_medium" color="primary">
-            {WorkItems.length}
+            {ProjectItems.length}
           </Typography>
         </Box>
         <Grid2 container>
           {isTab ? null : <Grid2 size={2} />}
           <Grid2 size={isTab ? 12 : 8}>
-            {WorkItems.map((work: any, index: any) => (
+            {ProjectItems.map((project: any, index: any) => (
               <Accordion
-                expanded={expanded === work}
+                key={project}
+                expanded={expanded === project}
                 classes={{ expanded: classes.expandedAccordion }}
-                onChange={handleChange(work, index)}
+                onChange={handleChange(project, index)}
                 sx={{
                   overflow: "hidden",
                   background: "transparent",
@@ -108,13 +114,13 @@ const Work = (props: any) => {
                 <AccordionSummary
                   expandIcon={null}
                   className={
-                    selectedWork === work
+                    selectedProject === project
                       ? classes.selectedWorkTitle
                       : classes.workTitle
                   }
                   onClick={() => {
-                    if (work === selectedWork) setSelectedWork(null);
-                    else setSelectedWork(work);
+                    if (project === selectedProject) setSelectedProject(null);
+                    else setSelectedProject(project);
                   }}
                   ref={(el) => (scrollToRef.current[index] = el)}
                 >
@@ -123,7 +129,7 @@ const Work = (props: any) => {
                     alignItems="center"
                     gap="1rem"
                     justifyContent={"space-between"}
-                    width="100%"
+                    width={"100%"}
                   >
                     <Typography
                       variant={
@@ -134,12 +140,12 @@ const Work = (props: any) => {
                       alignItems={"center"}
                       gap="1rem"
                     >
-                      {selectedWork && selectedWork === work ? (
+                      {selectedProject && selectedProject === project ? (
                         <ArrowDropDownOutlinedIcon fontSize="large" />
                       ) : (
                         <PlayArrowOutlinedIcon />
                       )}
-                      <span>{work}</span>
+                      <span>{project}</span>
                     </Typography>
                     <Typography
                       variant={
@@ -149,16 +155,12 @@ const Work = (props: any) => {
                       color="primary.main"
                       sx={{ opacity: 0.6 }}
                     >
-                      {WorkTitles[work]}
+                      {ProjectTechs[project]}
                     </Typography>
                   </Box>
                 </AccordionSummary>
-                <AccordionDetails
-                  sx={{
-                    paddingTop: 0,
-                  }}
-                >
-                  {getWorkComponent(work)}
+                <AccordionDetails sx={{ paddingTop: 0 }}>
+                  {getProjectComponent(project)}
                 </AccordionDetails>
               </Accordion>
             ))}
@@ -170,4 +172,4 @@ const Work = (props: any) => {
   );
 };
 
-export default Work;
+export default Projects;

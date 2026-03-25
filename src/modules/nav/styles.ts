@@ -26,6 +26,9 @@ export const useStyles = makeStyles((theme: Theme) =>
       justifyContent: "space-between",
       borderBottom: "1px solid rgb(55 65 81)",
       alignItems: "center",
+      [theme.breakpoints.down("sm")]: {
+        paddingLeft: "0 !important",
+      },
     },
     appbar: {
       boxShadow: "none !important",
@@ -33,5 +36,21 @@ export const useStyles = makeStyles((theme: Theme) =>
       padding: "0 2rem",
       backdropFilter: "blur(2px)",
     },
-  })
+    drawer: {
+      width: "60vw",
+      backgroundColor: `${theme.palette.primary.contrastText} !important`,
+      backdropFilter: "blur(8px)",
+    },
+    drawerHeader: {
+      display: "flex",
+      justifyContent: "flex-end",
+      padding: "0.75rem 1rem",
+    },
+    drawerLinks: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "2rem",
+      padding: "1rem 2rem",
+    },
+  }),
 );

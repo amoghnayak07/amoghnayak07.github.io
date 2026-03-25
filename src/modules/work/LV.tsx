@@ -18,9 +18,15 @@ const LV = (props: any) => {
         p={"0 1rem 0.5rem"}
       >
         <Box>
-          <Typography variant="heading_02_medium" color="primary.dark">
-            Software Developer
-          </Typography>
+          {isMob ? (
+            <Typography
+              variant="heading_03_medium"
+              color="primary.dark"
+              display={!isMob ? "none" : ""}
+            >
+              Software Developer
+            </Typography>
+          ) : null}
           <Typography variant="sub_heading_medium" color="primary">
             June 2021 - Oct 2023
           </Typography>
@@ -38,12 +44,11 @@ const LV = (props: any) => {
           color="primary"
           mt="1rem"
         >
-          At LetsVenture, I was a core contributor to trica capital and Scalix,
-          platforms empowering startups and investors through streamlined ESOP
-          management, investment workflows, and founder tools. I led agile
-          sprints, translated business needs into technical execution, and
-          optimized API response-times by 40%. I also ensured timely delivery of
-          high-impact features through tight cross-functional coordination.
+          Built core startup-investor connectivity features handling 100K+ daily
+          operations using TypeScript, React, and Node.js. Improved API
+          performance by 22% via DB optimization and CDN. Led integrations with
+          Zoho CRM, SignEasy, and Razorpay - and shipped zero-downtime
+          deployments via Bitbucket CI/CD.
         </Typography>
 
         <Link
