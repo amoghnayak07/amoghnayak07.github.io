@@ -21,7 +21,6 @@ const DistributedKVStore = (props: any) => {
         <Typography
           variant={isMob ? "heading_04_medium" : "heading_03_medium"}
           color="primary"
-          mt="1rem"
         >
           Extended a replicated key-value store (state machine replication) with
           two production-grade features: a write-ahead log (WAL) for crash

@@ -36,16 +36,11 @@ const QollaR = (props: any) => {
         <Typography
           variant={isMob ? "heading_04_medium" : "heading_03_medium"}
           color="primary"
-          mt="1rem"
         >
           Built and launched a full-stack pet-care platform on the MERN stack,
-          onboarding 150+ street dog records within the first month. Shipped
+          onboarding 500+ street dog records within the first month. Shipped
           with Dockerized CI/CD on AWS EC2, ECR, and Nginx from day one.
         </Typography>
-
-        {/* <Box mt="1.5rem">
-          <Carousel images={QollaRImages} />
-        </Box> */}
       </Box>
     </Fade>
   );

@@ -1,142 +1,82 @@
-import {
-  AppBar,
-  Box,
-  Drawer,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
-import { useState } from "react";
-import { Link } from "react-scroll";
+import { Box, Typography } from "@mui/material";
+import WindowSharpIcon from "@mui/icons-material/WindowSharp";
+import { useEffect, useRef, useState } from "react";
 import { useStyles } from "./styles";
 
 const Nav = (props: any) => {
-  const { activeSection, isMob } = props;
+  const { activeSection, setActiveSection } = props;
   const classes = useStyles();
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [startOpen, setStartOpen] = useState(false);
+  const [time, setTime] = useState(new Date());
+  const menuRef = useRef<HTMLDivElement>(null);
 
-  const navLinks = ["work", "projects", "about", "contact"];
+  const navLinks = ["intro", "work", "projects", "about", "contact"];
+  const labels: Record<string, string> = {
+    intro: "Home",
+    work: "Work",
+    projects: "Projects",
+    about: "About",
+    contact: "Contact",
+  };
+
+  useEffect(() => {
+    const t = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(t);
+  }, []);
+
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setStartOpen(false);
+      }
+    };
+    if (startOpen) document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, [startOpen]);
+
+  const clock = time.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
   return (
-    <AppBar position="fixed" className={classes.appbar} component="nav">
-      <Toolbar className={classes.toolbar}>
-        {isMob ? (
-          <Box display={"flex"} gap="1rem" alignItems={"center"}>
-            <>
-              <IconButton
-                onClick={() => setDrawerOpen(true)}
-                sx={{ color: "primary.dark" }}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Drawer
-                anchor="left"
-                open={drawerOpen}
-                onClose={() => setDrawerOpen(false)}
-                PaperProps={{ className: classes.drawer }}
-              >
-                <Box className={classes.drawerHeader}>
-                  <IconButton
-                    onClick={() => setDrawerOpen(false)}
-                    sx={{ color: "primary.dark" }}
-                  >
-                    <CloseIcon />
-                  </IconButton>
-                </Box>
-                <Box className={classes.drawerLinks}>
-                  {navLinks.map((section) => (
-                    <Link
-                      key={section}
-                      to={section}
-                      smooth={true}
-                      duration={600}
-                      offset={-30}
-                      spy={true}
-                      onClick={() => setDrawerOpen(false)}
-                    >
-                      <Typography
-                        variant="h6"
-                        className={
-                          activeSection === section
-                            ? classes.currPage
-                            : classes.navs
-                        }
-                      >
-                        {section.charAt(0).toUpperCase() + section.slice(1)}
-                      </Typography>
-                    </Link>
-                  ))}
-                </Box>
-              </Drawer>
-            </>
-            <Link
-              key={"intro"}
-              to={"intro"}
-              smooth={true}
-              duration={600}
-              offset={-30}
-              spy={true}
-            >
-              <Typography
-                variant={isMob ? "heading_03_bold" : "heading_02_bold"}
-                color={
-                  activeSection === "intro" ? "primary.dark" : "primary.main"
-                }
-                className={`${classes.navs} ${classes.noUnderline}`}
-              >
-                A G N
-              </Typography>
-            </Link>
-          </Box>
-        ) : (
-          <Link
-            key={"intro"}
-            to={"intro"}
-            smooth={true}
-            duration={600}
-            offset={-30}
-            spy={true}
-          >
-            <Typography
-              variant={isMob ? "heading_03_bold" : "heading_02_bold"}
-              color={
-                activeSection === "intro" ? "primary.dark" : "primary.main"
-              }
-              className={`${classes.navs} ${classes.noUnderline}`}
-            >
-              A G N
-            </Typography>
-          </Link>
-        )}
+    <Box className={classes.taskbar} ref={menuRef}>
+      <Box
+        className={`${classes.startButton} ${startOpen ? classes.startActive : ""}`}
+        onClick={() => setStartOpen((o) => !o)}
+      >
+        <span className={classes.startLogo}>
+          <WindowSharpIcon fontSize="small" color="primary" />
+        </span>
+        <Typography className={classes.startText}>AGN</Typography>
+      </Box>
 
-        {isMob ? null : (
-          <Box display={"flex"} alignItems={"center"} gap={"2rem"}>
+      {startOpen && (
+        <Box className={classes.startMenu}>
+          <Box className={classes.startMenuSpine} />
+          <Box className={classes.startMenuItems}>
             {navLinks.map((section) => (
-              <Link
+              <Typography
                 key={section}
-                to={section}
-                smooth={true}
-                duration={600}
-                offset={-30}
-                spy={true}
+                className={`${classes.startMenuItem} ${
+                  activeSection === section ? classes.startMenuItemActive : ""
+                }`}
+                onClick={() => {
+                  setActiveSection(section);
+                  setStartOpen(false);
+                }}
               >
-                <Typography
-                  variant="h6"
-                  color="primary.dark"
-                  className={
-                    activeSection === section ? classes.currPage : classes.navs
-                  }
-                >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
-                </Typography>
-              </Link>
+                {labels[section]}
+              </Typography>
             ))}
           </Box>
-        )}
-      </Toolbar>
-    </AppBar>
+        </Box>
+      )}
+
+      <Box className={classes.clock}>
+        <Typography className={classes.clockText}>{clock}</Typography>
+      </Box>
+    </Box>
   );
 };
 

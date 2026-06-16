@@ -10,8 +10,9 @@ export const useStyles = makeStyles((theme: Theme) =>
       alignItems: "center",
       gap: "0.5rem",
       width: "5rem",
-      backgroundColor: `${theme.palette.primary.contrastText} !important`,
+      background: `linear-gradient(80deg, ${theme.palette.primary.contrastText}, ${theme.palette.secondary.contrastText})`,
       marginTop: "1rem !important",
+      boxShadow: "none",
     },
-  })
+  }),
 );

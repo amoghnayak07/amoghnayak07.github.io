@@ -21,7 +21,6 @@ const GameNightPlanner = (props: any) => {
         <Typography
           variant={isMob ? "heading_04_medium" : "heading_03_medium"}
           color="primary"
-          mt="1rem"
         >
           A social Android app for organizing game nights with friends. Users
           create events, invite attendees, vote on which game to play via an

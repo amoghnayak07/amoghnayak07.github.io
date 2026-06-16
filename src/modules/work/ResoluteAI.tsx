@@ -22,7 +22,6 @@ const ResoluteAI = (props: any) => {
         <Typography
           variant={isMob ? "heading_04_medium" : "heading_03_medium"}
           color="primary"
-          mt="1rem"
         >
           Shipped a production-ready clinical MVP for 100+ pilot users ahead of
           schedule. Built accessible React interfaces, implemented Firebase Auth

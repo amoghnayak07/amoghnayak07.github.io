@@ -6,24 +6,26 @@ export const WorkItems = [
 ];
 
 export const WorkTitles: Record<string, string> = {
-  BuRP: "Founder, Software Developer",
-  LetsVenture: "Software Developer",
-  "Praan-e-Rakshak": "Full Stack Developer",
+  BuRP: "Founder, FullStack Engineer",
+  LetsVenture: "Software Development Engineer",
+  "Praan-e-Rakshak": "FullStack Developer",
   ResoluteAI: "Full Stack Development Intern",
 };
 
 export const ProjectItems = [
-  "Game Creator",
-  "AI Platform Game",
+  "Inspector GoGent",
+  "DungeonMind",
   "Relay-Intent",
+  "AI Platformer",
   "QollaR",
   "Distributed KV Store",
   "Game Night Planner",
 ];
 
 export const ProjectTechs: Record<string, string> = {
-  "Game Creator": "React · FastAPI · PostgreSQL",
-  "AI Platform Game": "Python · PyTorch · Pygame · Deep Q-Learning",
+  "Inspector GoGent": "Go · Kubernetes · client-go · xAI Grok",
+  DungeonMind: "React · FastAPI · PostgreSQL · HuggingFace",
+  "AI Platformer": "Python · PyTorch · Pygame · Deep Q-Learning",
   "Relay-Intent": "Flask · React · Firebase · Gemini API",
   QollaR: "MongoDB · Node.js · React.js · AWS · Docker",
   "Distributed KV Store": "C++ · TCP Sockets · WAL · Distributed Systems",

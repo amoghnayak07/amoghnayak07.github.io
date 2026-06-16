@@ -24,11 +24,11 @@ const LV = (props: any) => {
               color="primary.dark"
               display={!isMob ? "none" : ""}
             >
-              Software Developer
+              Software Development Engineer
             </Typography>
           ) : null}
           <Typography variant="sub_heading_medium" color="primary">
-            June 2021 - Oct 2023
+            June 2021 - July 2024
           </Typography>
           {/* <Box display="flex" gap="1rem" mt="1rem" flexWrap={"wrap"}>
             {LVSkills.map((skill: any) => (
@@ -42,13 +42,14 @@ const LV = (props: any) => {
         <Typography
           variant={isMob ? "heading_04_medium" : "heading_03_medium"}
           color="primary"
-          mt="1rem"
         >
-          Built core startup-investor connectivity features handling 100K+ daily
-          operations using TypeScript, React, and Node.js. Improved API
-          performance by 22% via DB optimization and CDN. Led integrations with
-          Zoho CRM, SignEasy, and Razorpay - and shipped zero-downtime
-          deployments via Bitbucket CI/CD.
+          Built and owned four core fintech systems: ESOP management, investment
+          flows, a pitch-deck platform, and a payments + e-sign integration
+          layer (Razorpay, SignEasy, Zoho). Cut p95 API latency by 66% across
+          100K+ daily requests via query optimization, indexing, CDN, and load
+          balancing, and architected an AWS Lambda + SQS pipeline with
+          CloudWatch observability. Mentored two junior engineers to SWE I
+          promotions in six months.
         </Typography>
 
         <Link

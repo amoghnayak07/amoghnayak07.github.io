@@ -5,12 +5,7 @@ const About = (props: any) => {
   const { isMob, isMd } = props;
 
   return (
-    <Box
-      display="flex"
-      gap="3rem"
-      justifyContent={"space-between"}
-      alignItems={"center"}
-    >
+    <Box flex={1} padding={isMob ? "3rem 0" : 0}>
       <Box
         display={"flex"}
         flexDirection={"column"}
@@ -42,8 +37,8 @@ const About = (props: any) => {
           }
           color="primary"
         >
-          Currently finishing my MS in CS at Northeastern, where I spend most of
-          my time on distributed systems and AI coursework. I like hard
+          I recently finished my MS in CS at Northeastern University, focused on
+          distributed systems and AI, and I'm now based in New York. I like hard
           problems, fast feedback loops, and coffee that's too strong.
         </Typography>
         <Typography
@@ -56,7 +51,9 @@ const About = (props: any) => {
           }
           color="primary"
         >
-          Skateboarding and live music when I'm not at a keyboard.
+          Outside of work I'm learning Japanese, and I keep my side projects
+          fun; it's how I learn. Skateboarding and live music when I'm not at a
+          keyboard.
         </Typography>
         <Button
           variant="contained"
@@ -66,7 +63,12 @@ const About = (props: any) => {
             textTransform: "capitalize",
             height: "2.5rem",
             color: "primary.light",
-            backgroundColor: "primary.contrastText",
+            background: "linear-gradient(80deg, #1084d0, #61bffc)",
+            "&:hover": {
+              boxShadow: "none",
+              transform: "scale(0.92)",
+            },
+            boxShadow: "none",
           }}
           startIcon={<GetAppOutlinedIcon fontSize="small" />}
           href="/assets/images/Contact/Amogh_GNayak_Resume.pdf"
@@ -76,19 +78,6 @@ const About = (props: any) => {
           Resume
         </Button>
       </Box>
-      {/* <Box
-        width="50%"
-        display="flex"
-        justifyContent={"center"}
-        alignItems={"center"}
-      >
-        <img
-          src={"/assets/images/Contact/Me.jpg"}
-          alt="AGN"
-          width="450px"
-          style={{ borderRadius: "2.5rem" }}
-        />
-      </Box> */}
     </Box>
   );
 };

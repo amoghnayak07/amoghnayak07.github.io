@@ -1,56 +1,119 @@
 import { Theme } from "@mui/material";
 import { createStyles, makeStyles } from "@mui/styles";
 
-export const useStyles = makeStyles((theme: Theme) =>
+const FACE = "#9e9e9e";
+const HILIGHT = "#ffffff";
+const SHADOW = "#808080";
+const DKSHADOW = "#000000";
+
+const raised = {
+  borderTop: `2px solid ${HILIGHT}`,
+  borderLeft: `2px solid ${HILIGHT}`,
+  borderRight: `2px solid ${DKSHADOW}`,
+  borderBottom: `2px solid ${DKSHADOW}`,
+  boxShadow: `inset -1px -1px 0 ${SHADOW}, inset 1px 1px 0 ${FACE}`,
+};
+
+export const useStyles = makeStyles((_theme: Theme) =>
   createStyles({
-    navs: {
-      cursor: "pointer",
-      transition: "transform 0.4s ease, text-decoration 0.4s ease",
-      "&:hover": {
-        textDecoration: "underline",
-        transform: "scale(0.9)",
-        color: theme.palette.primary.main,
-      },
-    },
-    noUnderline: {
-      textDecoration: "none !important",
-    },
-    currPage: {
-      color: `${theme.palette.primary.dark} !important`,
-      transform: "scale(0.9)",
-      textDecoration: "underline",
-      cursor: "pointer",
-    },
-    toolbar: {
+    taskbar: {
+      position: "fixed",
+      bottom: 0,
+      left: 0,
+      right: 0,
+      height: "3rem",
+      zIndex: 10001, // above windows + scanlines
       display: "flex",
-      justifyContent: "space-between",
-      borderBottom: "1px solid rgb(55 65 81)",
       alignItems: "center",
-      [theme.breakpoints.down("sm")]: {
-        paddingLeft: "0 !important",
+      justifyContent: "space-between",
+      padding: "0 4px",
+      backgroundColor: FACE,
+      borderTop: `2px solid ${HILIGHT}`,
+    },
+    startButton: {
+      display: "flex",
+      alignItems: "center",
+      gap: "0.4rem",
+      height: "1.9rem",
+      padding: "0 0.6rem",
+      cursor: "pointer",
+      backgroundColor: FACE,
+      ...raised,
+      "&:active": {
+        borderTop: `2px solid ${DKSHADOW}`,
+        borderLeft: `2px solid ${DKSHADOW}`,
+        borderRight: `2px solid ${HILIGHT}`,
+        borderBottom: `2px solid ${HILIGHT}`,
       },
     },
-    appbar: {
-      boxShadow: "none !important",
-      backgroundColor: "transparent !important",
-      padding: "0 2rem",
-      backdropFilter: "blur(2px)",
+    startActive: {
+      borderTop: `2px solid ${DKSHADOW}`,
+      borderLeft: `2px solid ${DKSHADOW}`,
+      borderRight: `2px solid ${HILIGHT}`,
+      borderBottom: `2px solid ${HILIGHT}`,
     },
-    drawer: {
-      width: "60vw",
-      backgroundColor: `${theme.palette.primary.contrastText} !important`,
-      backdropFilter: "blur(8px)",
+    startLogo: {
+      fontSize: "1.1rem",
+      lineHeight: 1,
+      color: "#818CF8",
     },
-    drawerHeader: {
+    startText: {
+      fontFamily: "VT323 !important",
+      fontSize: "1.5rem !important",
+      fontWeight: 700,
+      lineHeight: 1,
+      color: "#000000",
+    },
+    startMenu: {
+      position: "absolute",
+      bottom: "2.6rem",
+      left: "4px",
+      width: "12rem",
       display: "flex",
-      justifyContent: "flex-end",
-      padding: "0.75rem 1rem",
+      backgroundColor: FACE,
+      ...raised,
     },
-    drawerLinks: {
+    startMenuSpine: {
+      width: "1.6rem",
+      background: "linear-gradient(180deg, #1084d0, #61bffc)",
+    },
+    startMenuItems: {
+      flex: 1,
       display: "flex",
       flexDirection: "column",
-      gap: "2rem",
-      padding: "1rem 2rem",
+      padding: "3px",
+    },
+    startMenuItem: {
+      fontFamily: "VT323 !important",
+      fontSize: "1.15rem !important",
+      lineHeight: 1.1,
+      color: "#000000",
+      padding: "0.35rem 0.6rem",
+      cursor: "pointer",
+      "&:hover": {
+        backgroundColor: "#1084d0",
+        color: "#ffffff",
+      },
+    },
+    startMenuItemActive: {
+      backgroundColor: "rgba(0,0,128,0.12)",
+    },
+    clock: {
+      height: "1.9rem",
+      display: "flex",
+      alignItems: "center",
+      padding: "0 0.7rem",
+      backgroundColor: FACE,
+      borderTop: `1px solid ${SHADOW}`,
+      borderLeft: `1px solid ${SHADOW}`,
+      borderRight: `1px solid ${HILIGHT}`,
+      borderBottom: `1px solid ${HILIGHT}`,
+    },
+    clockText: {
+      fontFamily: "VT323 !important",
+      fontSize: "1.1rem !important",
+      lineHeight: 1,
+      color: "#000000",
     },
   }),
 );

@@ -22,12 +22,11 @@ const PeR = (props: any) => {
         <Typography
           variant={isMob ? "heading_04_medium" : "heading_03_medium"}
           color="primary"
-          mt="1rem"
         >
           Founded and built a real-time emergency response platform on the MERN
           stack during COVID-19. Cut average response time by 50% with
-          WebSockets and optimized data flows. Tracked 500+ active cases with
-          live Google Maps routing and real-time dashboards.
+          WebSockets and optimized data flows. Tracked 500+ cases with live
+          Google Maps routing and real-time dashboards.
         </Typography>
       </Box>
     </Fade>
