@@ -7,13 +7,14 @@ export const useStyles = makeStyles((theme: Theme) =>
       color: theme.palette.primary.contrastText,
     },
     section: {
-      scrollBehavior: "smooth",
       minHeight: "100vh",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      scrollSnapAlign: "start",
-      transition: "opacity 0.4s ease-in-out",
+      marginTop: "-5rem",
+      [theme.breakpoints.down("sm")]: {
+        marginTop: "-3rem",
+      },
     },
     workSection: {
       scrollBehavior: "smooth",
@@ -26,10 +27,7 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     introSection: {
       scrollBehavior: "smooth",
-      minHeight: "100vh",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+
       scrollSnapAlign: "start",
       transition: "opacity 0.4s ease-in-out",
       paddingTop: "5rem",
@@ -39,20 +37,12 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     workTitle: {
       position: "relative",
-      left: "-2.5rem",
       cursor: "pointer",
       display: "flex !important",
       gap: "1rem",
       alignItems: "center",
-      transition: "ease-in 0.15s !important",
-      "& .viewWork": {
-        visibility: "hidden",
-      },
       "&:hover": {
-        left: "-1rem",
-        "& .viewWork": {
-          visibility: "visible",
-        },
+        transform: "scale(0.92)",
       },
     },
     selectedWorkTitle: {
@@ -61,11 +51,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       display: "flex !important",
       gap: "1rem",
       alignItems: "center",
-      transition: "ease-in 0.15s",
-      "& .viewWork": {
-        visibility: "hidden",
-      },
-      left: "-1rem",
+      transform: "scale(0.92)",
     },
     coffee: {
       animation: `$bounce 5s infinite ease-in-out`,
@@ -99,12 +85,10 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     contactIcon: {
       fontSize: "2.5rem !important",
-      transition:
-        "transform 0.25s ease-in-out, color 0.25s ease-in-out !important",
       "&:hover": {
         color: theme.palette.primary.contrastText,
         transform: "scale(0.8)",
       },
     },
-  })
+  }),
 );

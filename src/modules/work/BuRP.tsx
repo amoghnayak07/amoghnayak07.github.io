@@ -20,7 +20,7 @@ const BuRP = (props: any) => {
         <Box>
           {isMob ? (
             <Typography variant="heading_03_medium" color="primary.dark">
-              Founder, Software Developer
+              Founder, FullStack Engineer
             </Typography>
           ) : null}
           <Typography variant="sub_heading_medium" color="primary">
@@ -33,13 +33,14 @@ const BuRP = (props: any) => {
         <Typography
           variant={isMob ? "heading_04_medium" : "heading_03_medium"}
           color="primary"
-          mt="1rem"
         >
-          Founded and built a multi-tenant ERP SaaS from 0 to 1. Drove $60K+
-          revenue in 3 months through rapid iteration on customer feedback.
-          Architected microservices on AWS with Node.js, MongoDB schema-driven
-          React dashboards, and Dockerized CI/CD - cutting deployment time by
-          60%.
+          Built a multi-tenant ERP SaaS end-to-end and solo, generating $60K+
+          revenue from 20 paying customers in 3 months. Shipped POS, order
+          management, invoicing, inventory, and billing as modular subsystems on
+          a multi-org architecture with org-level data isolation and RBAC. Built
+          a schema-driven dashboard engine letting clients define their own
+          fields and charts, and offloaded bulk reporting to an async SQS
+          pipeline.
         </Typography>
         <Link
           to="https://www.app.burpp.in"

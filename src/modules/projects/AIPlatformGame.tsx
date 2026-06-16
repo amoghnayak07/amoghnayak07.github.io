@@ -21,7 +21,6 @@ const AIPlatformGame = (props: any) => {
         <Typography
           variant={isMob ? "heading_04_medium" : "heading_03_medium"}
           color="primary"
-          mt="1rem"
         >
           Built a platform game where a Deep Q-Network (DQN) agent learns to
           navigate 8 increasingly complex levels. Implemented Double DQN with

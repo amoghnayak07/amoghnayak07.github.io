@@ -10,12 +10,13 @@ const Contact = (props: any) => {
 
   return (
     <Box
-      display="flex"
-      flexDirection="column"
+      flex={1}
       gap="2rem"
-      justifyContent="center"
-      alignItems="center"
       textAlign="center"
+      display="flex"
+      flexDirection={"column"}
+      justifyContent={"center"}
+      alignItems={"center"}
     >
       <Typography
         variant={isMob ? "heading_02_medium" : "heading_01_medium"}

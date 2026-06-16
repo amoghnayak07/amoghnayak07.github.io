@@ -1,51 +1,16 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Grid2,
-  Typography,
-} from "@mui/material";
+import { Box, Grid2, Typography } from "@mui/material";
 import { useStyles } from "./styles";
-import PlayArrowOutlinedIcon from "@mui/icons-material/PlayArrowOutlined";
-import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import { WorkItems, WorkTitles } from "../../constants/PortfolioConstants";
 import BuRP from "../work/BuRP";
 import LV from "../work/LV";
 import PeR from "../work/PeR";
 import ResoluteAI from "../work/ResoluteAI";
+import { useWindowManager } from "../../common/win95/WindowManagerContext";
 
 const Work = (props: any) => {
   const classes = useStyles();
-
-  const { isTab, isMob, activeSection } = props;
-
-  const [expanded, setExpanded] = useState<string | false>(false);
-  const [selectedWork, setSelectedWork] = useState<any>(null);
-
-  useEffect(() => {
-    if (activeSection === "work") {
-      setExpanded(false);
-      setSelectedWork(null);
-    }
-  }, [activeSection]);
-
-  const handleChange =
-    (panel: string, index: number) =>
-    (_event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false);
-      if (isExpanded) {
-        // delay to let the accordion expand first
-        setTimeout(() => {
-          const el = scrollToRef.current[index];
-          const yOffset = -60; // Adjust based on navbar height
-          const y =
-            el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: y, behavior: "smooth" });
-        }, 100);
-      }
-    };
+  const { isTab, isMob } = props;
+  const { openWindow } = useWindowManager();
 
   const getWorkComponent = (work: string) => {
     switch (work) {
@@ -62,15 +27,8 @@ const Work = (props: any) => {
     }
   };
 
-  const scrollToRef: any = useRef<(HTMLDivElement | null)[]>([]);
-
   return (
-    <Box
-      display={"flex"}
-      gap="2.5rem"
-      padding={isTab ? "6rem 0 0" : "8rem 3rem 0"}
-      width="100%"
-    >
+    <Box flex={1}>
       <Box
         display="flex"
         flexDirection={"column"}
@@ -90,80 +48,50 @@ const Work = (props: any) => {
             {WorkItems.length}
           </Typography>
         </Box>
-        <Grid2 container>
-          {isTab ? null : <Grid2 size={2} />}
-          <Grid2 size={isTab ? 12 : 8}>
-            {WorkItems.map((work: any, index: any) => (
-              <Accordion
-                expanded={expanded === work}
-                classes={{ expanded: classes.expandedAccordion }}
-                onChange={handleChange(work, index)}
+        <Grid2 container justifyContent={"center"}>
+          <Grid2 size={isTab ? 12 : 9}>
+            {WorkItems.map((work: any) => (
+              <Box
+                key={work}
+                className={classes.workTitle}
+                onClick={() =>
+                  openWindow(`work-${work}`, work, getWorkComponent(work))
+                }
                 sx={{
-                  overflow: "hidden",
-                  background: "transparent",
-                  boxShadow: "none",
+                  cursor: "pointer",
                   borderBottom: "1px solid rgb(0, 0, 0, 0.2)",
                 }}
               >
-                <AccordionSummary
-                  expandIcon={null}
-                  className={
-                    selectedWork === work
-                      ? classes.selectedWorkTitle
-                      : classes.workTitle
-                  }
-                  onClick={() => {
-                    if (work === selectedWork) setSelectedWork(null);
-                    else setSelectedWork(work);
-                  }}
-                  ref={(el) => (scrollToRef.current[index] = el)}
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  gap="1rem"
+                  justifyContent={"space-between"}
+                  width="100%"
                 >
-                  <Box
+                  <Typography
+                    variant={
+                      isMob ? "sub_heading_extra_small" : "heading_01_small"
+                    }
+                    color="primary"
                     display="flex"
-                    alignItems="center"
+                    alignItems={"center"}
                     gap="1rem"
-                    justifyContent={"space-between"}
-                    width="100%"
                   >
-                    <Typography
-                      variant={
-                        isMob ? "sub_heading_extra_small" : "heading_01_small"
-                      }
-                      color="primary"
-                      display="flex"
-                      alignItems={"center"}
-                      gap="1rem"
-                    >
-                      {selectedWork && selectedWork === work ? (
-                        <ArrowDropDownOutlinedIcon fontSize="large" />
-                      ) : (
-                        <PlayArrowOutlinedIcon />
-                      )}
-                      <span>{work}</span>
-                    </Typography>
-                    <Typography
-                      variant={
-                        isMob ? "heading_05_medium" : "heading_04_medium"
-                      }
-                      display={isMob ? "none" : ""}
-                      color="primary.main"
-                      sx={{ opacity: 0.6 }}
-                    >
-                      {WorkTitles[work]}
-                    </Typography>
-                  </Box>
-                </AccordionSummary>
-                <AccordionDetails
-                  sx={{
-                    paddingTop: 0,
-                  }}
-                >
-                  {getWorkComponent(work)}
-                </AccordionDetails>
-              </Accordion>
+                    {work}
+                  </Typography>
+                  <Typography
+                    variant={isMob ? "heading_05_medium" : "heading_04_medium"}
+                    display={isMob ? "none" : ""}
+                    color="primary.main"
+                    sx={{ opacity: 0.6 }}
+                  >
+                    {WorkTitles[work]}
+                  </Typography>
+                </Box>
+              </Box>
             ))}
           </Grid2>
-          {isTab ? null : <Grid2 size={2} />}
         </Grid2>
       </Box>
     </Box>

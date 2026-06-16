@@ -1,17 +1,21 @@
 import { Box, Typography } from "@mui/material";
 import { useStyles } from "./styles";
-import { Link } from "react-scroll";
 import LinkButton from "../../common/linkButton/LinkButton";
 import { IntroImages } from "../../constants/PortfolioConstants";
 
 const Intro = (props: any) => {
   const classes = useStyles();
 
-  const { isTab, isMob } = props;
+  const { isTab, isMob, setActiveSection } = props;
 
   return (
-    <Box display="flex" flexDirection={"column"} alignItems={"center"}>
-      <Box display="flex">
+    <Box flex={1}>
+      <Box
+        display="flex"
+        width={"100%"}
+        gap={isMob ? 0 : "2rem"}
+        justifyContent={"center"}
+      >
         <img
           src={IntroImages.COFFEE.img}
           alt={IntroImages.COFFEE.alt}
@@ -47,7 +51,7 @@ const Intro = (props: any) => {
         color="primary"
         textAlign={"center"}
       >
-        Full-Stack & AI Engineer
+        FullStack & AI Engineer
       </Typography>
       <Typography
         variant={
@@ -64,26 +68,11 @@ const Intro = (props: any) => {
         I ship fast, scale smart, and don't break prod.
       </Typography>
       <Box display="flex" justifyContent={"center"} gap="2rem" mt="1rem">
-        <Link
-          key={"work"}
-          to={"work"}
-          smooth={true}
-          duration={600}
-          offset={-30}
-          spy={true}
-        >
-          <LinkButton text="my work" />
-        </Link>
-        <Link
-          key={"about"}
-          to={"about"}
-          smooth={true}
-          duration={600}
-          offset={-30}
-          spy={true}
-        >
-          <LinkButton text="more about me" />
-        </Link>
+        <LinkButton text="my work" onClick={() => setActiveSection("work")} />
+        <LinkButton
+          text="more about me"
+          onClick={() => setActiveSection("about")}
+        />
       </Box>
     </Box>
   );

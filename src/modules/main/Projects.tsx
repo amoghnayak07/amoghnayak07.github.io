@@ -1,58 +1,27 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Grid2,
-  Typography,
-} from "@mui/material";
+import { Box, Grid2, Typography } from "@mui/material";
 import { useStyles } from "./styles";
-import PlayArrowOutlinedIcon from "@mui/icons-material/PlayArrowOutlined";
-import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import { ProjectItems, ProjectTechs } from "../../constants/PortfolioConstants";
 import RelayIntent from "../projects/RelayIntent";
-import GameCreator from "../projects/GameCreator";
+import DungeonMind from "../projects/DungeonMind";
 import AIPlatformGame from "../projects/AIPlatformGame";
 import DistributedKVStore from "../projects/DistributedKVStore";
 import GameNightPlanner from "../projects/GameNightPlanner";
 import QollaR from "../work/QollaR";
+import { useWindowManager } from "../../common/win95/WindowManagerContext";
+import InspectorGoGent from "../projects/InspectorGoGent";
 
 const Projects = (props: any) => {
   const classes = useStyles();
-
-  const { isTab, isMob, activeSection } = props;
-
-  const [expanded, setExpanded] = useState<string | false>(false);
-  const [selectedProject, setSelectedProject] = useState<any>(null);
-
-  useEffect(() => {
-    if (activeSection === "projects") {
-      setExpanded(false);
-      setSelectedProject(null);
-    }
-  }, [activeSection]);
-
-  const handleChange =
-    (panel: string, index: number) =>
-    (_event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false);
-      if (isExpanded) {
-        setTimeout(() => {
-          const el = scrollToRef.current[index];
-          const yOffset = -60;
-          const y =
-            el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: y, behavior: "smooth" });
-        }, 100);
-      }
-    };
+  const { isTab, isMob } = props;
+  const { openWindow } = useWindowManager();
 
   const getProjectComponent = (project: string) => {
     switch (project) {
-      case "Game Creator":
-        return <GameCreator isMob={isMob} />;
-      case "AI Platform Game":
+      case "Inspector GoGent":
+        return <InspectorGoGent isMob={isMob} />;
+      case "DungeonMind":
+        return <DungeonMind isMob={isMob} />;
+      case "AI Platformer":
         return <AIPlatformGame isMob={isMob} />;
       case "Relay-Intent":
         return <RelayIntent isMob={isMob} />;
@@ -67,15 +36,8 @@ const Projects = (props: any) => {
     }
   };
 
-  const scrollToRef: any = useRef<(HTMLDivElement | null)[]>([]);
-
   return (
-    <Box
-      display={"flex"}
-      gap="2.5rem"
-      padding={isTab ? "6rem 0 0" : "8rem 3rem 0"}
-      width="100%"
-    >
+    <Box flex={1}>
       <Box
         display="flex"
         flexDirection={"column"}
@@ -95,77 +57,54 @@ const Projects = (props: any) => {
             {ProjectItems.length}
           </Typography>
         </Box>
-        <Grid2 container>
-          {isTab ? null : <Grid2 size={2} />}
-          <Grid2 size={isTab ? 12 : 8}>
-            {ProjectItems.map((project: any, index: any) => (
-              <Accordion
+        <Grid2 container justifyContent={"center"}>
+          <Grid2 size={isTab ? 12 : 9}>
+            {ProjectItems.map((project: any) => (
+              <Box
                 key={project}
-                expanded={expanded === project}
-                classes={{ expanded: classes.expandedAccordion }}
-                onChange={handleChange(project, index)}
+                className={classes.workTitle}
+                onClick={() =>
+                  openWindow(
+                    `project-${project}`,
+                    project,
+                    getProjectComponent(project),
+                  )
+                }
                 sx={{
-                  overflow: "hidden",
-                  background: "transparent",
-                  boxShadow: "none",
+                  cursor: "pointer",
                   borderBottom: "1px solid rgb(0, 0, 0, 0.2)",
                 }}
               >
-                <AccordionSummary
-                  expandIcon={null}
-                  className={
-                    selectedProject === project
-                      ? classes.selectedWorkTitle
-                      : classes.workTitle
-                  }
-                  onClick={() => {
-                    if (project === selectedProject) setSelectedProject(null);
-                    else setSelectedProject(project);
-                  }}
-                  ref={(el) => (scrollToRef.current[index] = el)}
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  gap="1rem"
+                  justifyContent={"space-between"}
+                  width={"100%"}
                 >
-                  <Box
+                  <Typography
+                    variant={
+                      isMob ? "sub_heading_extra_small" : "heading_01_small"
+                    }
+                    color="primary"
                     display="flex"
-                    alignItems="center"
+                    alignItems={"center"}
                     gap="1rem"
-                    justifyContent={"space-between"}
-                    width={"100%"}
                   >
-                    <Typography
-                      variant={
-                        isMob ? "sub_heading_extra_small" : "heading_01_small"
-                      }
-                      color="primary"
-                      display="flex"
-                      alignItems={"center"}
-                      gap="1rem"
-                    >
-                      {selectedProject && selectedProject === project ? (
-                        <ArrowDropDownOutlinedIcon fontSize="large" />
-                      ) : (
-                        <PlayArrowOutlinedIcon />
-                      )}
-                      <span>{project}</span>
-                    </Typography>
-                    <Typography
-                      variant={
-                        isMob ? "heading_05_medium" : "heading_04_medium"
-                      }
-                      display={isMob ? "none" : ""}
-                      color="primary.main"
-                      sx={{ opacity: 0.6 }}
-                    >
-                      {ProjectTechs[project]}
-                    </Typography>
-                  </Box>
-                </AccordionSummary>
-                <AccordionDetails sx={{ paddingTop: 0 }}>
-                  {getProjectComponent(project)}
-                </AccordionDetails>
-              </Accordion>
+                    <span>{project}</span>
+                  </Typography>
+                  <Typography
+                    variant={isMob ? "heading_05_medium" : "heading_04_medium"}
+                    display={isMob ? "none" : ""}
+                    color="primary.main"
+                    sx={{ opacity: 0.6 }}
+                  >
+                    {ProjectTechs[project]}
+                  </Typography>
+                </Box>
+              </Box>
             ))}
           </Grid2>
-          {isTab ? null : <Grid2 size={2} />}
         </Grid2>
       </Box>
     </Box>
