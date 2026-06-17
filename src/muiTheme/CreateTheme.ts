@@ -75,7 +75,7 @@ const theme = createTheme({
       fontFamily: FontConstants.DisplayFont,
       display: "block",
       fontSize: "3rem",
-      fontWeight: 500,
+      fontWeight: "bold",
     },
     heading_01_bold: {
       fontFamily: FontConstants.DisplayFont,
@@ -127,7 +127,7 @@ const theme = createTheme({
       fontFamily: FontConstants.DisplayFont,
       display: "block",
       fontSize: "1.5rem",
-      fontWeight: "bold",
+      fontWeight: 500,
     },
     heading_02_extra_bold: {
       fontFamily: FontConstants.DisplayFont,
